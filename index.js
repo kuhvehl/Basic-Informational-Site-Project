@@ -7,14 +7,16 @@ const server = http.createServer((req, res) => {
     
     // Map specific URLs to corresponding HTML files
     if (filePath === './' || filePath === './index') {
-        filePath = './index.html';
+        filePath = '/index.html';
     }
     if (filePath === './about') {
-        filePath = './about.html';
+        filePath = '/about.html';
     }
-    if (filePath === './contact-me') {
-        filePath = './contact-me.html';
+    if (filePath === './contact-me' || filePath === './contact') {
+        filePath = '/contact-me.html';
     }
+
+    filePath = path.join(__dirname, filePath);
 
     // Read the file and serve the appropriate HTML
     fs.readFile(filePath, (err, content) => {
