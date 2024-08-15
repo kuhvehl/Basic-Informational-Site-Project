@@ -7,17 +7,18 @@ const port = 8080;
 const server = http.createServer((req, res) => {
   let filePath;
   let contentType = "text/html";
+
   if (req.url === "/") {
-    filePath = path.join(__dirname, "index.html");
+    filePath = path.join(__dirname, "pages", "index.html");
   } else if (req.url === "/about") {
-    filePath = path.join(__dirname, "about.html");
+    filePath = path.join(__dirname, "pages", "about.html");
   } else if (req.url === "/contact-me") {
-    filePath = path.join(__dirname, "contact-me.html");
+    filePath = path.join(__dirname, "pages", "contact-me.html");
   } else if (req.url === "/styles.css") {
     filePath = path.join(__dirname, "styles.css");
     contentType = "text/css";
   } else {
-    filePath = path.join(__dirname, "404.html");
+    filePath = path.join(__dirname, "pages", "404.html");
     res.statusCode = 404;
   }
 
